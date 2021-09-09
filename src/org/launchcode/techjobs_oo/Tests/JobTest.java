@@ -21,7 +21,7 @@ public class JobTest {
     @Test
     public void testSettingJobId() {
         Job secondJob = new Job();
-        assertEquals(2, secondJob.getId(), 0.001);
+        assertEquals(9, secondJob.getId(), 0.001);
     }
 
     @Test
@@ -50,7 +50,7 @@ public class JobTest {
     public void testJobToString() {
         testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType(
                 "Quality control"), new CoreCompetency("Persistence"));
-        assertEquals("\nID: 2\nName: Product tester\nEmployer: ACME\nLocation: Desert\nPosition Type: Quality " +
+        assertEquals("\nID: 5\nName: Product tester\nEmployer: ACME\nLocation: Desert\nPosition Type: Quality " +
                 "control\nCore Competency: Persistence\n", testJob.toString());
     }
 
