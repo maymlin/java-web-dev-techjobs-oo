@@ -46,4 +46,12 @@ public class JobTest {
         assertFalse(newJob.equals(duplicateJob));
     }
 
+    @Test
+    public void testJobToString() {
+        testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType(
+                "Quality control"), new CoreCompetency("Persistence"));
+        assertEquals("\nID: 2\nName: Product tester\nEmployer: ACME\nLocation: Desert\nPosition Type: Quality " +
+                "control\nCore Competency: Persistence\n", testJob.toString());
+    }
+
 }
