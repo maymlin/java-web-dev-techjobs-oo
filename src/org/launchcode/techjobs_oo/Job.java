@@ -114,11 +114,30 @@ public class Job {
 
     @Override
     public String toString() {
-        return "\nID: " + this.getId() +
-                "\nName: " + this.getName() +
-                "\nEmployer: " + this.getEmployer().getValue() +
-                "\nLocation: " + this.getLocation().getValue() +
-                "\nPosition Type: " + this.getPositionType().getValue() +
-                "\nCore Competency: " + this.getCoreCompetency().getValue() + "\n";
+        String emptyField = "Data not available";
+        String idOnly = "This job does not seem to exist.";
+
+        if (!checkNotEmpty(this.getName()) && !checkNotEmpty(this.getEmployer().getValue())
+        && !checkNotEmpty(this.getLocation().getValue()) && !checkNotEmpty(this.getPositionType().getValue())
+        && !checkNotEmpty(this.getCoreCompetency().getValue())) {
+            return idOnly;
+        } else {
+            return "\nID: " + this.getId() +
+                    "\nName: " + (checkNotEmpty(this.getName()) ? this.getName() : emptyField) +
+                    "\nEmployer: " +
+                    (checkNotEmpty(this.getEmployer().getValue()) ? this.getEmployer().getValue() : emptyField) +
+                    "\nLocation: " +
+                    (checkNotEmpty(this.getLocation().getValue()) ? this.getLocation().getValue() : emptyField) +
+                    "\nPosition Type: " +
+                    (checkNotEmpty(this.getPositionType().getValue()) ? this.getPositionType().getValue() :
+                            emptyField) +
+                    "\nCore Competency: " +
+                            (checkNotEmpty(this.getCoreCompetency().getValue()) ?
+                                    this.getCoreCompetency().getValue() : emptyField) + "\n";
+        }
+    }
+
+    private boolean checkNotEmpty(String field) {
+        return field.length() != 0;
     }
 }
